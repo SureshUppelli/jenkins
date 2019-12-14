@@ -34,7 +34,12 @@ pipeline {
 			sh label: '', script: '''docker tag sample_image sreenagandla/sample_image
 docker push sreenagandla/sample_image'''
 			}
-    		}   
+    		} 
+		stage('deployment') {
+  			steps {
+    				
+ 				 }
+		}
 	}
 	post { 
         	always { 
