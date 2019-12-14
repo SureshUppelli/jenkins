@@ -27,6 +27,13 @@ pipeline {
             			}
 			}
         	}
+		stage('docker build') {
+			sh label: '', script: 'docker build -t  sample_image .'
+    
+		}
+		//stage('deployment') {
+   
+		}
 	}
 	post { 
         	always { 
