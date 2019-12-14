@@ -1,6 +1,6 @@
 FROM openjdk:8-jdk-alpine
 
-COPY ./target/spring-boot-sample-atmosphere-1.4.0.BUILD-SNAPSHOT.jar	
+COPY ./spring-boot-samples/spring-boot-sample-atmosphere/target/spring-boot-sample-atmosphere-1.4.0.BUILD-SNAPSHOT.jar	
 
 EXPOSE 8080
 
