@@ -7,6 +7,6 @@ metadata:
 spec:
   containers:
     - name: abc-app
-      image: sreenagandla/sample_image:tagVersion
+      image: sreenagandla/sample_image
       ports:
         - containerPort: 8080
