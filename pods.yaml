@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: abc-app
+  labels:
+    app: abc-app
+spec:
+  containers:
+    - name: abc-app
+      image: sreenagandla/sample_image:tagVersion
+      ports:
+        - containerPort: 8080
