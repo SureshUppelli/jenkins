@@ -1,8 +1,7 @@
 pipeline {
-	//agent {
-  //label 'java'
-//}
-	agent any
+	agent {
+  label 'java'
+}
 	environment {
 		project_path = "spring-boot-samples/spring-boot-sample-atmosphere"
 	}
@@ -36,11 +35,22 @@ pipeline {
 docker push sreenagandla/sample_image'''
 			}
     		} 
-		//stage('deployment') {
-  		//	steps {
-    				
- 		//		 }
-		//}
+		stage('deployment') {
+  			steps {
+    				sh "chmod +x changeTag.sh"
+				sh "./changeTag.sh $sample_image"
+				sshagent(['k8s-machine']) {
+                    		sh "scp -o StrictHostKeyChecking=no services.yml node-app-pod.yml ubuntu@ec2-52-66-245-14:/home/ubuntu/"
+                    		script{
+                        		try{
+                            			sh "ssh ubuntu@ec2-52-66-245-14 kubectl apply -f ."
+                        		}catch(error){
+                            			sh "ssh ubuntu@ec2-52-66-245-14 kubectl create -f ."
+                       				 }
+                    			}
+               			 }
+ 			}
+		}
 	}
 	post { 
         	always { 
