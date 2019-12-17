@@ -40,12 +40,12 @@ docker push sreenagandla/sample_image'''
   			steps {
     				
 				sshagent(['k8s-machine']) {
-                    		sh "scp -o StrictHostKeyChecking=no services.yml node-app-pod.yml ubuntu@ec2-52-66-245-14:/home/ubuntu/"
+                    		sh "scp -o StrictHostKeyChecking=no services.yml node-app-pod.yml ubuntu@ec2-13.234.75.178:/home/ubuntu/"
                     		script{
                         		try{
-                            			sh "ssh ubuntu@ec2-52-66-245-14 kubectl apply -f ."
+                            			sh "ssh ubuntu@ec2-13.234.75.178 kubectl apply -f ."
                         		}catch(error){
-                            			sh "ssh ubuntu@ec2-52-66-245-14 kubectl create -f ."
+                            			sh "ssh ubuntu@ec2-13.234.75.178 kubectl create -f ."
                        				 }
                     			}
                			 }
